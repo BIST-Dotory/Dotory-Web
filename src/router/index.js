@@ -89,9 +89,9 @@ const router = createRouter({
   routes
 })
 
-// 네비게이션 가드 추가 (로그인 체크)
+// 네비게이션 가드
 router.beforeEach((to, from, next) => {
-  const isLoggedIn = localStorage.getItem('isLoggedIn') // 로그인 상태 체크
+  const isLoggedIn = localStorage.getItem('isLoggedIn')
   
   if (to.path !== '/login' && !isLoggedIn) {
     next('/login')

@@ -99,7 +99,7 @@ h2 {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-color: #ffffff;
+  background-color: #f5f5f5;
   font-family: Arial, sans-serif;
 }
 
@@ -191,84 +191,4 @@ button:hover {
   .login-card {
     margin: 0 1rem;
   }
-}
-
-.app-container {
-  display: flex;
-  min-height: 100vh;
-}
-
-.sidebar {
-  width: 250px;
-  background-color: #30407E;
-  color: white;
-  padding: 1rem;
-}
-
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  padding: 1rem;
-  margin-bottom: 2rem;
-}
-
-.menu-items {
-  display: flex;
-  flex-direction: column;
-}
-
-.menu-item {
-  padding: 1rem;
-  color: white;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.menu-item:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.main-content {
-  flex: 1;
-  padding: 2rem;
-}
-
-.app-container {
-  display: flex;
-  min-height: 100vh;
-}
-
-.sidebar {
-  width: 250px;
-  background-color: #3b4b8c;
-  color: white;
-  padding: 1rem;
-}
-
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  padding: 1rem;
-  margin-bottom: 2rem;
-}
-
-.menu-items {
-  display: flex;
-  flex-direction: column;
-}
-
-.menu-item {
-  padding: 1rem;
-  color: white;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.menu-item:hover, .menu-item.active {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.main-content {
-  flex: 1;
-  padding: 2rem;
 }
