@@ -129,9 +129,9 @@ export default {
 }
 
 /* 메뉴 아이템 호버 효과 (선택사항) */
-.menu-item:hover:not(.router-link-active) {
+/* .menu-item:hover:not(.router-link-active) {
   background-color: rgba(245, 245, 245, 0.5);
-}
+} */
 
 .main-content {
   flex: 1;
