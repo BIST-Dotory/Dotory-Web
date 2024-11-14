@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Login from '../components/Login.vue'
 import MainLayout from '../layouts/MainLayout.vue'
 import DashBoard from '../components/DashBoard.vue'
-import Notice from '../components/notice/Notice.vue'
+import NoticeList from '../components/notice/NoticeList.vue'
 import NoticeDetail from '../components/notice/NoticeDetail.vue'
 import Suggest from '../components/Suggest.vue'
 import Outing from '../components/Outing.vue'
@@ -36,14 +36,13 @@ const routes = [
       {
         path: 'notice',
         name: 'Notice',
-        component: Notice,
-        children: [
-          {
-            path: ':noticeid',
-            name: 'NoticeDetail',
-            component: NoticeDetail
-          },
-        ],
+        component: NoticeList,
+      },
+      {
+        path: 'notice/:id',
+        name: 'NoticeDetail',
+        component: NoticeDetail,
+        props: true
       },
       {
         path: 'suggest',
