@@ -4,22 +4,22 @@
       <div class="logo">DOTORY</div>
       <div class="menu-container">
         <div class="main-menu">
-          <router-link to="/dashboard" class="menu-item">DashBoard</router-link>
+          <router-link to="/dashboard" class="menu-item">대시보드</router-link>
           <router-link 
             to="/notice" 
             class="menu-item"
             :class="{ 'router-link-active': $route.path.startsWith('/notice') }">
-            Notice
+            공지사항
           </router-link>
-          <router-link to="/suggest" class="menu-item bordered">Suggest</router-link>
-          <router-link to="/outing" class="menu-item bordered">Outing</router-link>
-          <router-link to="/room" class="menu-item bordered">Room</router-link>
-          <router-link to="/approval" class="menu-item bordered">Approval</router-link>
-          <router-link to="/calendar" class="menu-item bordered">Calendar</router-link>
+          <router-link to="/suggest" class="menu-item bordered">건의사항</router-link>
+          <router-link to="/outing" class="menu-item bordered">외출/외박</router-link>
+          <router-link to="/room" class="menu-item bordered">학생 정보</router-link>
+          <router-link to="/approval" class="menu-item bordered">가입 승인</router-link>
+          <router-link to="/calendar" class="menu-item bordered">달력</router-link>
         </div>
         <div class="bottom-menu">
-          <router-link to="/setting" class="menu-item bordered">Setting</router-link>
-          <router-link to="/logout" class="menu-item bordered" @click="handleLogout">Logout</router-link>
+          <router-link to="/setting" class="menu-item bordered">설정</router-link>
+          <router-link to="/logout" class="menu-item bordered" @click="handleLogout">로그아웃</router-link>
         </div>
       </div>
     </nav>
@@ -71,10 +71,12 @@ export default {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  font-family: "NanumGothic";
 }
 
 .bottom-menu {
   margin-top: auto;
+  font-family: "NanumGothic";
 }
 
 .menu-item {
@@ -90,7 +92,8 @@ export default {
 
 .menu-item:hover {
   background-color: #f5f5f5;
-  color: #30407E
+  color: #30407E;
+  font-family: "NanumGothicBold";
 }
 
 .menu-item.bordered {
@@ -101,6 +104,7 @@ export default {
   background-color: #f5f5f5;
   color: #30407E;
   position: relative;
+  font-family: "NanumGothicBold"
 }
 
 .menu-item.router-link-active::before {
@@ -127,11 +131,6 @@ export default {
   border-top-right-radius: 10px;
   box-shadow: 10px -10px 0 10px #f5f5f5;  /* 배경색과 동일한 색상 */
 }
-
-/* 메뉴 아이템 호버 효과 (선택사항) */
-/* .menu-item:hover:not(.router-link-active) {
-  background-color: rgba(245, 245, 245, 0.5);
-} */
 
 .main-content {
   flex: 1;

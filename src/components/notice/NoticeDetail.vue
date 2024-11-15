@@ -1,6 +1,6 @@
 <template>
   <div class="notice-detail">
-    <h2>{{ notice.title }}</h2>
+    <h1>{{ notice.title }}</h1>
     <div class="content">
       {{ notice.content }}
     </div>

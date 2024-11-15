@@ -1,0 +1,19 @@
+@font-face {
+  font-family:'NanumGothic';
+  src: url('/fonts/NanumGothic.otf') format('truetype');
+}
+
+@font-face {
+  font-family:'NanumGothicBold';
+  src: url('/fonts/NanumGothicBold.otf') format('truetype');
+}
+
+@font-face {
+  font-family:'NanumGothicExtraBold';
+  src: url('/fonts/NanumGothicExtraBold.otf') format('truetype');
+}
+
+@font-face {
+  font-family:'NanumGothicLight';
+  src: url('/fonts/NanumGothicLight.otf') format('truetype');
+}
