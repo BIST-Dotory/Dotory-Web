@@ -1,0 +1,44 @@
+@font-face {
+  font-family:'NanumGothic';
+  src: url('/fonts/NanumGothic.otf') format('truetype');
+}
+
+@font-face {
+  font-family:'NanumGothicBold';
+  src: url('/fonts/NanumGothicBold.otf') format('truetype');
+}
+
+@font-face {
+  font-family:'NanumGothicExtraBold';
+  src: url('/fonts/NanumGothicExtraBold.otf') format('truetype');
+}
+
+@font-face {
+  font-family:'NanumGothicLight';
+  src: url('/fonts/NanumGothicLight.otf') format('truetype');
+}
+
+@font-face {
+  font-family:'Baloo2-Bold';
+  src: url('/fonts/Baloo2-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family:'Baloo2-ExtraBold';
+  src: url('/fonts/Baloo2-ExtraBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family:'Baloo2-Medium';
+  src: url('//=fonts/Baloo2-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family:'Baloo2-Regular';
+  src: url('/fonts/Baloo2-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family:'Baloo2-SemiBold';
+  src: url('/fonts/Baloo2-SemiBold.otf') format('truetype');
+}
