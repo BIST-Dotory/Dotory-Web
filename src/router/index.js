@@ -1,31 +1,22 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Login from '../components/Login.vue'
-import MainLayout from '../layouts/MainLayout.vue'
-import DashBoard from '../components/DashBoard.vue'
-import NoticeList from '../components/notice/NoticeList.vue'
-import NoticeDetail from '../components/notice/NoticeDetail.vue'
-import Suggest from '../components/Suggest.vue'
-import Outing from '../components/Outing.vue'
-import Room from '../components/Room.vue'
-import Approval from '../components/Approval.vue'
-import Calendar from '../components/Calendar.vue'
-import Setting from '../components/Setting.vue'
-import Logout from '../components/Logout.vue'
+import Login from '~/auth/Login.vue'
+import Navigation from '~/navigation/Navigation.vue'
+import DashBoard from '~/dashboard/DashBoard.vue'
+
+
 
 const routes = [
-  // 로그인 페이지는 독립적인 경로
   {
     path: '/login',
     name: 'Login',
     component: Login
   },
-  // 메인 레이아웃을 사용하는 페이지들
   {
     path: '/',
-    component: MainLayout,
+    component: Navigation,
     children: [
       {
-        path: '',  // 기본 경로는 대시보드로
+        path: '',
         redirect: '/dashboard'
       },
       {

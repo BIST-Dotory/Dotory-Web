@@ -33,7 +33,7 @@
 export default {
   name: 'MainLayout',
   methods: {
-    handleLogout() {
+    Logout() {
       localStorage.removeItem('isLoggedIn')
       this.$router.push('/login')
     }
