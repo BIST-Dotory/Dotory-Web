@@ -1,10 +1,10 @@
 <template>
-  <div class="notice-list">
-    <h1>공지사항</h1>
+  <div class="outing-list">
+    <h1>외출/외박</h1>
     <ul>
-      <li v-for="notice in notices" :key="notice.id">
-        <router-link :to="{ name: 'NoticeDetail', params: { id: notice.id }}">
-          {{ notice.title }}
+      <li v-for="outing in outings" :key="outing.id">
+        <router-link :to="{ name: 'OutingDetail', params: { id: outing.id }}">
+          {{ outing.title }}
         </router-link>
       </li>
     </ul>

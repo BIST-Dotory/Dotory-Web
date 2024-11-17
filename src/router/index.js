@@ -2,8 +2,20 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Login from '~/auth/Login.vue'
 import Navigation from '~/navigation/Navigation.vue'
 import DashBoard from '~/dashboard/DashBoard.vue'
-
-
+import NoticeDetail from '~/notice/NoticeDetail.vue'
+import NoticeList from '~/notice/NoticeList.vue'
+import NoticeWrite from '~/notice/NoticeWrite.vue'
+import SuggestDetail from '~/suggest/SuggestDetail.vue'
+import SuggestList from '~/suggest/SuggestList.vue'
+import SuggestWrite from '~/suggest/SuggestWrite.vue'
+import OutingDetail from '~/outing/OutingDetail.vue'
+import OutingList from '~/outing/OutingList.vue'
+import StudentDetail from '~/student/StudentDetail.vue'
+import StudentList from '~/student/StudentList.vue'
+import Approval from '~/approval/Approval.vue'
+import Calendar from '~/calendar/Calendar.vue'
+import Setting from '~/auth/Setting.vue'
+import Logout from '~/auth/Logout.vue'
 
 const routes = [
   {
@@ -38,17 +50,35 @@ const routes = [
       {
         path: 'suggest',
         name: 'Suggest',
-        component: Suggest
+        component: SuggestList
+      },
+      {
+        path: 'suggest',
+        name: 'Suggest',
+        component: SuggestDetail,
+        props: true
       },
       {
         path: 'outing',
         name: 'Outing',
-        component: Outing
+        component: OutingList
       },
       {
-        path: 'room',
-        name: 'Room',
-        component: Room
+        path: 'outing/:id',
+        name: 'OutingDetail',
+        component: OutingDetail,
+        props: true
+      },
+      {
+        path: 'student',
+        name: 'Student',
+        component: StudentList
+      },
+      {
+        path: 'student/:id',
+        name: 'StudentDetail',
+        component: StudentDetail,
+        props: true
       },
       {
         path: 'approval',
@@ -79,7 +109,6 @@ const router = createRouter({
   routes
 })
 
-// 네비게이션 가드
 router.beforeEach((to, from, next) => {
   const isLoggedIn = localStorage.getItem('isLoggedIn')
   

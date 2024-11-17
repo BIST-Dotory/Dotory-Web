@@ -1,10 +1,10 @@
 <template>
-  <div class="notice-list">
+  <div class="suggest-list">
     <h1>공지사항</h1>
     <ul>
-      <li v-for="notice in notices" :key="notice.id">
-        <router-link :to="{ name: 'NoticeDetail', params: { id: notice.id }}">
-          {{ notice.title }}
+      <li v-for="suggest in suggests" :key="suggest.id">
+        <router-link :to="{ name: 'SuggestDetail', params: { id: suggest.id }}">
+          {{ suggest.title }}
         </router-link>
       </li>
     </ul>
