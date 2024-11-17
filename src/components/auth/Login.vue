@@ -1,4 +1,3 @@
-<!-- Login.vue -->
 <template>
   <div class="container">
     <div class="logo-section mb-4">
@@ -83,16 +82,16 @@ export default {
 
 .sub-title {
   font-size: 20px;
-  color: #777;
   font-family: 'NanumGothic';
-  margin-top: 10px;
+  color: #9A8A80;
+  margin-top: 15px;
 }
 
 .main-title {
   font-size: 48px;
   font-weight: bold;
-  color: #000;
   font-family: 'Baloo2-ExtraBold';
+  color: #4F3322;
   margin-top: -15px;
 }
 
@@ -114,10 +113,15 @@ export default {
   margin-bottom: 10px;
   font-weight: 500;
   font-family: 'NanumGothic';
+  color: #4F3322;
 }
 
 .form-group input {
-  font-family: 'NanumGothicLight';
+  font-family: 'NanumGothic';
+  color: #4F3322;
+}
+.form-group input::placeholder {
+  color: #9A8A80;
 }
 
 .form-control {
@@ -134,14 +138,14 @@ export default {
 }
 
 .form-check-label {
-  color: #666;
   font-size: 14px;
+  color: #4F3322;
 }
 
 .forgot-password {
-  color: #666;
   font-size: 14px;
   text-decoration: none;
+  color: #4F3322;
 }
 
 .btn-login {
@@ -158,5 +162,6 @@ export default {
 
 .btn-login:hover {
   background-color: #9B4B1C;
+  color: #4F3322;
 }
 </style>
