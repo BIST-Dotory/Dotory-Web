@@ -39,7 +39,7 @@ const routes = [
       {
         path: 'notice',
         name: 'Notice',
-        component: NoticeList,
+        component: NoticeList
       },
       {
         path: 'notice/:id',
@@ -48,15 +48,25 @@ const routes = [
         props: true
       },
       {
+        path: 'notice/write',
+        name: 'NoticeWrite',
+        component: NoticeWrite
+      },
+      {
         path: 'suggest',
         name: 'Suggest',
         component: SuggestList
       },
       {
-        path: 'suggest',
-        name: 'Suggest',
+        path: 'suggest/:id',
+        name: 'SuggestDetail',
         component: SuggestDetail,
         props: true
+      },
+      {
+        path: 'suggest/write',
+        name: 'SuggestWrite',
+        component: SuggestWrite
       },
       {
         path: 'outing',

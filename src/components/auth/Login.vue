@@ -10,7 +10,7 @@
     </div>
 
     <div class="login-form">
-      <form @submit.prevent="login">
+      <form @submit.prevent="handleSubmit">
         <div class="form-group">
           <label for="userId">아이디</label>
           <input type="text" class="form-control" id="userId" v-model="userId" placeholder="아이디를 입력하세요">
@@ -47,7 +47,7 @@ export default {
     }
   },
   methods: {
-    Login() {
+    handleSubmit() {
       // Here you would typically validate credentials
       // For now, we'll just redirect to dashboard
       localStorage.setItem('isLoggedIn', 'true')
@@ -59,7 +59,7 @@ export default {
 
 <style scoped>
 .container {
-  max-width: 400px;
+  max-width: 500px;
   margin: 100px auto;
   padding: 20px;
 }
@@ -72,30 +72,37 @@ export default {
 }
 
 .logo-img {
-  width: 50px;
-  height: 50px;
+  width: 120px;
+  height: 120px;
 }
 
 .title-section {
   text-align: left;
+  margin-left: -20px;
 }
 
 .sub-title {
-  font-size: 14px;
-  color: #666;
+  font-size: 20px;
+  color: #777;
+  font-family: 'NanumGothic';
+  margin-top: 10px;
 }
 
 .main-title {
-  font-size: 24px;
+  font-size: 48px;
   font-weight: bold;
   color: #000;
+  font-family: 'Baloo2-ExtraBold';
+  margin-top: -15px;
 }
 
 .login-form {
   background: #fff;
-  padding: 20px;
-  border-radius: 8px;
+  padding: 40px;
+  border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
 }
 
 .form-group {
@@ -104,20 +111,26 @@ export default {
 
 .form-group label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   font-weight: 500;
+  font-family: 'NanumGothic';
+}
+
+.form-group input {
+  font-family: 'NanumGothicLight';
 }
 
 .form-control {
   width: 100%;
   padding: 10px;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 10px;
   font-size: 14px;
 }
 
 .form-check-section {
   margin: 15px 0;
+  font-family: 'NanumGothic';
 }
 
 .form-check-label {
@@ -132,17 +145,18 @@ export default {
 }
 
 .btn-login {
-  background-color: #b17a5b;
+  background-color: #BA7851;
   color: white;
   padding: 12px;
   border: none;
-  border-radius: 4px;
+  border-radius: 10px;
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s;
+  font-family: 'NanumGothicBold';
 }
 
 .btn-login:hover {
-  background-color: #95644a;
+  background-color: #9B4B1C;
 }
 </style>

@@ -19,7 +19,7 @@ export default {
   },
   data() {
     return {
-      notice: {
+      outing: {
         id: this.id,
         title: '',
         content: ''
