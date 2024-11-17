@@ -57,6 +57,8 @@ export default {
 </script>
 
 <style scoped>
+@import "@/assets/css/style.css";
+
 .container {
   max-width: 500px;
   margin: 100px auto;
@@ -135,6 +137,10 @@ export default {
 .form-check-section {
   margin: 15px 0;
   font-family: 'NanumGothic';
+}
+
+.form-check-input {
+  border: 1px solid gray;
 }
 
 .form-check-label {
