@@ -78,15 +78,7 @@ button:focus-visible {
   }
 }
 
-input {
-  outline: none;
-}
-
 input:focus {
   border-color: #BA7851;
-}
-
-[type="checkbox"]:checked {
-  border-color: #BA7851;
-  background-color: #BA7851;
+  outline: none;
 }
