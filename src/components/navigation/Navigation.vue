@@ -6,16 +6,42 @@
       </div>
       <div class="nav-container">
         <div class="nav-links">
-          <router-link to="/dashboard" class="nav-item">대시보드</router-link>
-          <router-link to="/notice" class="nav-item">공지사항</router-link>
-          <router-link to="/suggest" class="nav-item">건의사항</router-link>
-          <router-link to="/outing" class="nav-item">외출외박</router-link>
-          <router-link to="/student" class="nav-item">학생정보</router-link>
-          <router-link to="/approval" class="nav-item">가입승인</router-link>
+          <router-link 
+            to="/notice" 
+            class="nav-item"
+            active-class="router-link-active"
+            :class="{ 'router-link-active': $route.path.startsWith('/notice') }">공지사항</router-link>
+          <router-link 
+            to="/suggest" 
+            class="nav-item"
+            active-class="router-link-active"
+            :class="{ 'router-link-active': $route.path.startsWith('/suggest') }">건의사항</router-link>
+          <router-link 
+            to="/outing" 
+            class="nav-item"
+            active-class="router-link-active"
+            :class="{ 'router-link-active': $route.path.startsWith('/outing') }">외출외박</router-link>
+          <router-link 
+            to="/student" 
+            class="nav-item"
+            active-class="router-link-active"
+            :class="{ 'router-link-active': $route.path.startsWith('/student') }">학생정보</router-link>
+          <router-link 
+            to="/approval" 
+            class="nav-item"
+            active-class="router-link-active"
+            :class="{ 'router-link-active': $route.path.startsWith('/approval') }">가입승인</router-link>
         </div>
         <div class="nav-bottom-item">
-          <router-link to="/setting" class="nav-item">설정</router-link>
-          <router-link to="/logout" class="nav-item" @click="handleLogout">로그아웃</router-link>
+          <router-link 
+            to="/setting" 
+            class="nav-item"
+            active-class="router-link-active"
+            :class="{ 'router-link-active': $route.path.startsWith('/setting') }">설정</router-link>
+          <router-link 
+            to="/logout" 
+            class="nav-item" 
+            @click="handleLogout">로그아웃</router-link>
         </div>
       </div>
     </nav>
@@ -44,7 +70,7 @@ export default {
 }
 
 .sidebar {
-  width: 200px;
+  width: 150px;
   background-color: #BA7851;
   color: white;
   display: flex;
@@ -54,7 +80,10 @@ export default {
 .logo {
   width: 120px;
   height: 120px;
-  padding: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem auto 1rem auto
 }
 
 .nav-container {
@@ -76,7 +105,7 @@ export default {
 }
 
 .nav-item {
-  padding: 1rem 1.5rem;
+  padding: 0.8rem 2rem;
   color: white;
   text-decoration: none;
   transition: background-color 0.3s;

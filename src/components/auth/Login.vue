@@ -128,7 +128,7 @@ export default {
 .form-control {
   width: 100%;
   padding: 10px;
-  border: 1px solid #f5f5f5;
+  border: 1px solid #9A8A80;
   border-radius: 10px;
   font-size: 14px;
 }
