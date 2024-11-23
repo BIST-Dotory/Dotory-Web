@@ -7,13 +7,11 @@ import NoticeList from '~/notice/NoticeList.vue'
 import NoticeWrite from '~/notice/NoticeWrite.vue'
 import SuggestDetail from '~/suggest/SuggestDetail.vue'
 import SuggestList from '~/suggest/SuggestList.vue'
-import SuggestWrite from '~/suggest/SuggestWrite.vue'
 import OutingDetail from '~/outing/OutingDetail.vue'
 import OutingList from '~/outing/OutingList.vue'
 import StudentDetail from '~/student/StudentDetail.vue'
 import StudentList from '~/student/StudentList.vue'
 import Approval from '~/approval/Approval.vue'
-import Calendar from '~/calendar/Calendar.vue'
 import Setting from '~/auth/Setting.vue'
 import Logout from '~/auth/Logout.vue'
 
@@ -64,11 +62,6 @@ const routes = [
         props: true
       },
       {
-        path: 'suggest/write',
-        name: 'SuggestWrite',
-        component: SuggestWrite
-      },
-      {
         path: 'outing',
         name: 'Outing',
         component: OutingList
@@ -94,11 +87,6 @@ const routes = [
         path: 'approval',
         name: 'Approval',
         component: Approval
-      },
-      {
-        path: 'calendar',
-        name: 'Calendar',
-        component: Calendar
       },
       {
         path: 'setting',

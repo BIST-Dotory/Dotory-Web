@@ -7,25 +7,15 @@
       <div class="nav-container">
         <div class="nav-links">
           <router-link to="/dashboard" class="nav-item">대시보드</router-link>
-          <router-link to="/notice" class="nav-item"
-            :class="{ 'router-link-active': $route.path.startsWith('/notice') }">
-            공지사항
-          </router-link>
-          <router-link to="/suggest" class="nav-item"
-            :class="{ 'router-link-active': $route.path.startsWith('/suggest') }">
-            건의사항
-          </router-link>
-          <router-link to="/outing" class="nav-item"
-            :class="{ 'router-link-active': $route.path.startsWith('/outing') }">
-            외출/외박
-          </router-link>
-          <router-link to="/student" class="nav-item bordered">학생정보</router-link>
-          <router-link to="/approval" class="nav-item bordered">가입승인</router-link>
-          <router-link to="/calendar" class="nav-item bordered">달력</router-link>
+          <router-link to="/notice" class="nav-item">공지사항</router-link>
+          <router-link to="/suggest" class="nav-item">건의사항</router-link>
+          <router-link to="/outing" class="nav-item">외출외박</router-link>
+          <router-link to="/student" class="nav-item">학생정보</router-link>
+          <router-link to="/approval" class="nav-item">가입승인</router-link>
         </div>
         <div class="nav-bottom-item">
-          <router-link to="/setting" class="nav-item bordered">설정</router-link>
-          <router-link to="/logout" class="nav-item bordered" @click="handleLogout">로그아웃</router-link>
+          <router-link to="/setting" class="nav-item">설정</router-link>
+          <router-link to="/logout" class="nav-item" @click="handleLogout">로그아웃</router-link>
         </div>
       </div>
     </nav>
@@ -64,6 +54,7 @@ export default {
 .logo {
   width: 120px;
   height: 120px;
+  padding: 40px;
 }
 
 .nav-container {
@@ -88,23 +79,20 @@ export default {
   padding: 1rem 1.5rem;
   color: white;
   text-decoration: none;
-  transition: background-color 0.2s;
+  transition: background-color 0.3s;
   display: block;
   position: relative;
   margin-right: -1px;
   /* 컨텐츠 영역과의 경계를 없애기 위해 */
   z-index: 1;
   /* 활성 메뉴 아이템을 앞으로 가져오기 */
+  border-bottom: 1px solid #f5f5f5;
 }
 
 .nav-item:hover {
   background-color: #f5f5f5;
   color: #BA7851;
   font-family: "NanumGothicBold";
-}
-
-.nav-item.bordered {
-  border-top: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .nav-item.router-link-active {
@@ -145,7 +133,7 @@ export default {
 
 .main-content {
   flex: 1;
-  padding: 2rem;
+  padding: 3rem;
   background-color: #f5f5f5;
 }
 </style>

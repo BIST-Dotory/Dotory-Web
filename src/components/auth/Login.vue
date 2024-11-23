@@ -98,7 +98,7 @@ export default {
 }
 
 .login-form {
-  background: #fff;
+  background: #ffffff;
   padding: 40px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -113,7 +113,6 @@ export default {
 .form-group label {
   display: block;
   margin-bottom: 10px;
-  font-weight: 500;
   font-family: 'NanumGothic';
   color: #4F3322;
 }
@@ -129,7 +128,7 @@ export default {
 .form-control {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid #f5f5f5;
   border-radius: 10px;
   font-size: 14px;
 }
@@ -140,7 +139,7 @@ export default {
 }
 
 .form-check-input {
-  border: 1px solid gray;
+  border: 1px solid #9A8A80;
 }
 
 .form-check-label {
@@ -156,7 +155,7 @@ export default {
 
 .btn-login {
   background-color: #BA7851;
-  color: white;
+  color: #ffffff;
   padding: 12px;
   border: none;
   border-radius: 10px;
@@ -169,5 +168,21 @@ export default {
 .btn-login:hover {
   background-color: #9B4B1C;
   color: #4F3322;
+}
+
+.login-form .form-control:focus {
+  border-color: #9A8A80;
+  box-shadow: none;
+  outline: none;
+}
+
+.form-check-input:focus {
+  border-color: #9A8A80;
+  box-shadow: none;
+  outline: none;
+}
+
+.form-check-input:checked {
+  background-color: #BA7851;
 }
 </style>

@@ -77,8 +77,3 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
-
-input:focus {
-  border-color: #BA7851;
-  outline: none;
-}
