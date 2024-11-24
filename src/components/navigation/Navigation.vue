@@ -63,11 +63,14 @@
 }
 
 .sidebar {
+  position: fixed;
+  height: 100vh;
   width: 150px;
   background-color: #BA7851;
   color: white;
   display: flex;
   flex-direction: column;
+  z-index: 10;
 }
 
 .logo {
@@ -94,7 +97,8 @@
 }
 
 .nav-bottom-item {
-  margin-top: auto;
+  position: relative; /* 부모 요소 기준으로 고정 */
+  width: 100%;        /* 부모의 전체 너비에 맞춤 */
 }
 
 .nav-item {
@@ -155,7 +159,8 @@
 
 .main-content {
   flex: 1;
-  padding: 3rem;
+  margin-left: 150px;
+  padding: 5rem;
   background-color: #f5f5f5;
 }
 </style>

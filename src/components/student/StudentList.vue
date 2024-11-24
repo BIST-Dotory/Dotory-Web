@@ -1,12 +1,11 @@
 <template>
-  <div class="student-list">
-    <h1>학생정보</h1>
-    <ul>
-      <li v-for="student in students" :key="student.id">
-        <router-link :to="{ name: 'StudentDetail', params: { id: student.id } }">
-          {{ student.title }}
-        </router-link>
-      </li>
-    </ul>
+  <div class="container">
+    <div class="section-header">
+      <h2 class="title">학생정보</h2>
+    </div>
   </div>
 </template>
+
+<style scoped>
+@import "@/assets/css/style.css";
+</style>

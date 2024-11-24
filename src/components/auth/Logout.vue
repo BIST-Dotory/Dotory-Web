@@ -1,14 +1,14 @@
 <template>
   <div class="container">
-    <div class="content-wrapper">
+    <div class="section-header">
       <h2 class="title">로그아웃</h2>
-      <div class="logout-content">
-        <p class="message">로그아웃하시겠습니까?</p>
+    </div>
+    <div class="content">
+      <p class="message">로그아웃하시겠습니까?</p>
         <div class="button-group">
           <button @click="handleLogout" class="btn confirm">확인</button>
           <button @click="$router.go(-1)" class="btn cancel">취소</button>
         </div>
-      </div>
     </div>
   </div>
 </template>
@@ -26,31 +26,15 @@ export default {
 </script>
 
 <style scoped>
+@import "@/assets/css/style.css";
+
 .container {
   width: 100%;
   font-family: 'NanumGothic';
   color: #4F3322;
 }
 
-.title {
-  font-size: 24px;
-  margin-bottom: 20px;
-  position: relative;
-  padding-bottom: 10px;
-  font-family: 'NanumGothicBold';
-}
-
-.title::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background-color: #4F3322;
-}
-
-.logout-content {
+.content {
   margin-left: 20px;
   margin-top: 30px;
 }

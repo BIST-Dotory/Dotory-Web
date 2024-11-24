@@ -1,6 +1,11 @@
 <template>
-  <div>
-    <h1>가입승인</h1>
-    <!-- 승인/거절 컨텐츠만 추가 -->
+  <div class="container">
+    <div class="section-header">
+      <h2 class="title">가입승인</h2>
+    </div>
   </div>
 </template>
+
+<style scoped>
+@import "@/assets/css/style.css";
+</style>

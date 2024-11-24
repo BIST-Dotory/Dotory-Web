@@ -1,12 +1,11 @@
 <template>
-  <div class="outing-list">
-    <h1>외출/외박</h1>
-    <ul>
-      <li v-for="outing in outings" :key="outing.id">
-        <router-link :to="{ name: 'OutingDetail', params: { id: outing.id } }">
-          {{ outing.title }}
-        </router-link>
-      </li>
-    </ul>
+  <div class="container">
+    <div class="section-header">
+      <h2 class="title">외출외박</h2>
+    </div>
   </div>
 </template>
+
+<style scoped>
+@import "@/assets/css/style.css";
+</style>

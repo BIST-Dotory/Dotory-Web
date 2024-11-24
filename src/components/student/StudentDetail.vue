@@ -34,3 +34,7 @@ export default {
   // created() 훅에서 id를 이용해 게시글 데이터를 불러올 수 있습니다
 }
 </script>
+
+<style scoped>
+@import "@/assets/css/style.css";
+</style>

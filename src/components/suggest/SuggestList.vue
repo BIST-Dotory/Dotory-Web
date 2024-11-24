@@ -1,12 +1,11 @@
 <template>
-  <div class="suggest-list">
-    <h1>건의사항</h1>
-    <ul>
-      <li v-for="suggest in suggests" :key="suggest.id">
-        <router-link :to="{ name: 'SuggestDetail', params: { id: suggest.id } }">
-          {{ suggest.title }}
-        </router-link>
-      </li>
-    </ul>
+  <div class="container">
+    <div class="section-header">
+      <h2 class="title">건의사항</h2>
+    </div>
   </div>
 </template>
+
+<style scoped>
+@import "@/assets/css/style.css";
+</style>
