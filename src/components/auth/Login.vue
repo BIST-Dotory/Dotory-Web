@@ -57,7 +57,6 @@ export default {
 </script>
 
 <style scoped>
-@import "@/assets/css/style.css";
 
 .container {
   max-width: 500px;
@@ -167,7 +166,7 @@ export default {
 
 .btn-login:hover {
   background-color: #9B4B1C;
-  color: #4F3322;
+  color: #ffffff;
 }
 
 .login-form .form-control:focus {

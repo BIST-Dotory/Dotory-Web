@@ -6,6 +6,7 @@
       </div>
       <div class="nav-container">
         <div class="nav-links">
+          <router-link to="/dashboard" class="nav-item">대시보드</router-link>
           <router-link 
             to="/notice" 
             class="nav-item"
@@ -52,15 +53,7 @@
 </template>
 
 <script>
-export default {
-  name: 'Navigation',
-  methods: {
-    handleLogout() {
-      localStorage.removeItem('isLoggedIn')
-      this.$router.push('/login')
-    }
-  }
-}
+
 </script>
 
 <style scoped>
@@ -90,18 +83,18 @@ export default {
   display: flex;
   flex-direction: column;
   height: calc(100% - 1rem);
+  font-family: "NanumGothic";
+  font-size: 18px;
 }
 
 .nav-links {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  font-family: "NanumGothic";
 }
 
 .nav-bottom-item {
   margin-top: auto;
-  font-family: "NanumGothic";
 }
 
 .nav-item {
