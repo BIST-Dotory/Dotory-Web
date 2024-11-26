@@ -5,7 +5,7 @@
         <img src="@/assets/images/logo.png" alt="Dotory Logo" class="logo">
       </div>
       <div class="nav-container">
-        <div class="nav-links">
+        <div class="nav-menu">
           <router-link to="/dashboard" class="nav-item">대시보드</router-link>
           <router-link 
             to="/notice" 
@@ -90,7 +90,7 @@
   font-size: 18px;
 }
 
-.nav-links {
+.nav-menu {
   flex-grow: 1;
   display: flex;
   flex-direction: column;

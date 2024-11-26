@@ -1,7 +1,6 @@
 <template>
   <div class="container">
-    <div class="dashboard-wrapper">
-      <div class="grid-container">
+      <div class="dashboard-container">
         <!-- 왼쪽 컬럼 -->
         <div class="left-column">
           <!-- 공지사항 섹션 -->
@@ -102,7 +101,6 @@
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -119,7 +117,7 @@ export default {
   font-family: "NanumGothic";
 }
 
-.grid-container {
+.dashboard-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 50px;
