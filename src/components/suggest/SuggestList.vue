@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="section-header">
+    <div class="section-title">
       <h2 class="title">건의사항</h2>
     </div>
   </div>

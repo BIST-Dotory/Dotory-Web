@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="section-header">
+    <div class="section-title">
       <h2 class="title">로그아웃</h2>
     </div>
     <div class="content">
