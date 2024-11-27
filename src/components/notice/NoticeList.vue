@@ -17,32 +17,40 @@
         <tbody>
           <tr>
             <td>2</td>
-            <td>자유 게시판</td>
+            <td>자유 게시글</td>
             <td>관리자</td>
             <td>2024.01.01</td>
             <td>0</td>
           </tr>
           <tr>
             <td>1</td>
-            <td>공지사항 게시판</td>
+            <td>공지사항 게시글</td>
             <td>관리자</td>
             <td>2024.01.01</td>
             <td>10</td>
           </tr>
         </tbody>
       </table>
-      <div class="pagination-container">
-        <paginate :page-count="totalPages" :click-handler="changePage" :prev-text="'Previous'" :next-text="'Next'"
-          :container-class="'pagination'" :page-class="'page-item'">
-        </paginate>
 
-        <div class="items-list">
-          <!-- 현재 페이지의 아이템 표시 -->
-          <div v-for="item in currentPageItems" :key="item.id">
-            {{ item.name }}
-          </div>
-        </div>
-      </div>
+      <nav aria-label="Page navigation" class="d-flex justify-content-center mt-4">
+        <ul class="pagination">
+          <li class="page-item" :class="{ disabled: currentPage === 1 }">
+            <a class="page-link" href="#" @click.prevent="changePage(currentPage - 1)">
+              &laquo;
+            </a>
+          </li>
+          <li v-for="page in visiblePages" :key="page" class="page-item" :class="{ active: page === currentPage }">
+            <a class="page-link" href="#" @click.prevent="changePage(page)">
+              {{ page }}
+            </a>
+          </li>
+          <li class="page-item" :class="{ disabled: currentPage === totalPages }">
+            <a class="page-link" href="#" @click.prevent="changePage(currentPage + 1)">
+              &raquo;
+            </a>
+          </li>
+        </ul>
+      </nav>
 
       <div class="search-bar">
         <select class="search-select">
@@ -55,36 +63,43 @@
   </div>
 </template>
 
-<script setup>
-import { ref, computed } from 'vue'
-import Paginate from 'vuejs-paginate-next'
-
-// 예시 데이터
-const items = ref([
-  { id: 1, name: '아이템 1' },
-  { id: 2, name: '아이템 2' },
-  // ... 더 많은 아이템 추가
-])
-
-const currentPage = ref(1)
-const itemsPerPage = 5
-
-// 현재 페이지의 아이템들
-const currentPageItems = computed(() => {
-  const start = (currentPage.value - 1) * itemsPerPage
-  const end = start + itemsPerPage
-  return items.value.slice(start, end)
-})
-
-// 전체 페이지 수 계산
-const totalPages = computed(() => {
-  return Math.ceil(items.value.length / itemsPerPage)
-})
-
-// 페이지 변경 핸들러
-const changePage = (pageNum) => {
-  currentPage.value = pageNum
-}
+<script>
+export default {
+  props: {
+    totalPages: {
+      type: Number,
+      required: true,
+    },
+    currentPage: {
+      type: Number,
+      required: true,
+    },
+  },
+  computed: {
+    visiblePages() {
+      let pages = [];
+      if (this.totalPages <= 5) {
+        pages = Array.from({ length: this.totalPages }, (_, i) => i + 1);
+      } else {
+        if (this.currentPage <= 3) {
+          pages = [1, 2, 3, 4, '...', this.totalPages];
+        } else if (this.currentPage >= this.totalPages - 2) {
+          pages = [1, '...', this.totalPages - 3, this.totalPages - 2, this.totalPages - 1, this.totalPages];
+        } else {
+          pages = [1, '...', this.currentPage - 1, this.currentPage, this.currentPage + 1, '...', this.totalPages];
+        }
+      }
+      return pages;
+    },
+  },
+  methods: {
+    changePage(page) {
+      if (page !== '...' && page >= 1 && page <= this.totalPages) {
+        this.$emit('update:currentPage', page);
+      }
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -142,21 +157,16 @@ const changePage = (pageNum) => {
   vertical-align: middle;  /* 수직 정렬 중앙 */
 }
 
-.pagination {
-  display: flex;
-  justify-content: center;
-  list-style: none;
-  padding: 0;
+.page-item.active .page-link {
+  background-color: #b3754e;
+  border-color: #b3754e;
+  color: white;
 }
-
-.pagination .page-item {
-  margin: 0 5px;
-  cursor: pointer;
+.page-link {
+  color: #b3754e;
 }
-
-.pagination .page-item.active {
-  font-weight: bold;
-  color: blue;
+.page-link:hover {
+  color: #8c5a38;
 }
 
 .search-bar {
