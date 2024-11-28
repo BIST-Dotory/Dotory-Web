@@ -32,35 +32,52 @@
         </tbody>
       </table>
 
-      <nav aria-label="Page navigation" class="d-flex justify-content-center mt-4">
-        <ul class="pagination">
-          <li class="page-item" :class="{ disabled: currentPage === 1 }">
-            <a class="page-link" href="#" @click.prevent="changePage(currentPage - 1)">
-              &laquo;
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">«</span>
             </a>
           </li>
-          <li v-for="page in visiblePages" :key="page" class="page-item" :class="{ active: page === currentPage }">
-            <a class="page-link" href="#" @click.prevent="changePage(page)">
-              {{ page }}
-            </a>
-          </li>
-          <li class="page-item" :class="{ disabled: currentPage === totalPages }">
-            <a class="page-link" href="#" @click.prevent="changePage(currentPage + 1)">
-              &raquo;
+          <li class="page-item active"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">...</a></li>
+          <li class="page-item"><a class="page-link" href="#">50</a></li>
+          <li class="page-item"><a class="page-link" href="#">51</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">»</span>
             </a>
           </li>
         </ul>
       </nav>
 
-      <div class="search-bar">
-        <select class="search-select">
-          <option>전체</option>
-        </select>
-        <input type="text" placeholder="검색어를 입력하세요">
-        <button class="search-btn">검색</button>
+      <!-- 검색 및 글쓰기 버튼 -->
+      <div class="row mt-3">
+        <div class="col-md-6">
+          <div class="d-flex align-items-center">
+            <select class="form-select w-auto me-2">
+              <option selected>전체</option>
+            </select>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="검색어를 입력해주세요.">
+              <button class="btn btn-outline-secondary" type="button">
+                <i class="bi bi-search"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 d-flex justify-content-end">
+          <button type="button" class="btn btn-warning">
+            <i class="bi bi-pencil"></i>
+            글쓰기
+          </button>
+        </div>
       </div>
     </div>
   </div>
+
 </template>
 
 <script>
