@@ -32,11 +32,11 @@
         </tbody>
       </table>
 
-      <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
+      <nav class="pagination-nav">
+        <ul class="pagination-list">
           <li class="page-item">
             <a class="page-link" href="#" aria-label="Previous">
-              <span aria-hidden="true">«</span>
+              <i class="bi bi-arrow-left-short"></i>
             </a>
           </li>
           <li class="page-item active"><a class="page-link" href="#">1</a></li>
@@ -47,30 +47,30 @@
           <li class="page-item"><a class="page-link" href="#">51</a></li>
           <li class="page-item">
             <a class="page-link" href="#" aria-label="Next">
-              <span aria-hidden="true">»</span>
+              <i class="bi bi-arrow-right-short"></i>
             </a>
           </li>
         </ul>
       </nav>
 
       <!-- 검색 및 글쓰기 버튼 -->
-      <div class="row mt-3">
-        <div class="col-md-6">
-          <div class="d-flex align-items-center">
-            <select class="form-select w-auto me-2">
+      <div class="search-write-container">
+        <div class="search-section">
+          <div class="search-wrapper">
+            <select class="search-select">
               <option selected>전체</option>
             </select>
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="검색어를 입력해주세요.">
-              <button class="btn btn-outline-secondary" type="button">
+            <div class="search-input-group">
+              <input type="text" class="search-input" placeholder="검색어를 입력해주세요.">
+              <button class="search-button">
                 <i class="bi bi-search"></i>
               </button>
             </div>
           </div>
         </div>
-        <div class="col-md-6 d-flex justify-content-end">
-          <button type="button" class="btn btn-warning">
-            <i class="bi bi-pencil"></i>
+        <div class="write-section">
+          <button type="button" class="write-button">
+            <i class="bi bi-pencil-square"></i>
             글쓰기
           </button>
         </div>
@@ -174,40 +174,96 @@ export default {
   vertical-align: middle;  /* 수직 정렬 중앙 */
 }
 
-.page-item.active .page-link {
-  background-color: #b3754e;
-  border-color: #b3754e;
-  color: white;
-}
-.page-link {
-  color: #b3754e;
-}
-.page-link:hover {
-  color: #8c5a38;
+.pagination-nav {
+  margin: 2rem 0;
 }
 
-.search-bar {
+.pagination-list {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  list-style: none;
+  padding: 0;
+  gap: 5px;
+}
+
+.page-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: #4F3322;
+  text-decoration: none;
+  border: 1px solid #DED0C1;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.page-item.active .page-link {
+  background-color: #4F3322;
+  border-color: #4F3322;
+  color: white;
+}
+
+/* 검색 영역 */
+.search-write-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
 }
 
 .search-select {
-  padding: 5px;
-  border: 1px solid #ddd;
+  padding: 8px 12px;
+  border: 1px solid #DED0C1;
+  border-radius: 4px;
+  color: #4F3322;
+  margin-right: 8px;
+  min-width: 100px;
+  background-color: white;
 }
 
-.search-bar input {
-  padding: 5px 10px;
-  border: 1px solid #ddd;
-  width: 200px;
+.search-input-group {
+  display: flex;
+  align-items: center;
 }
 
-.search-btn {
-  padding: 5px 15px;
-  background-color: #666;
+.search-input {
+  padding: 8px 12px;
+  border: 1px solid #DED0C1;
+  border-radius: 4px 0 0 4px;
+  width: 250px;
+  color: #4F3322;
+}
+
+.search-button {
+  padding: 8px 16px;
+  background-color: white;
+  border: 1px solid #DED0C1;
+  border-left: none;
+  border-radius: 0 4px 4px 0;
+  color: #4F3322;
+}
+
+/* 글쓰기 버튼 */
+.write-button {
+  padding: 8px 16px;
+  background-color: #4F3322;
   color: white;
   border: none;
-  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.write-button:hover {
+  background-color: #3a261a;
+}
+
+/* 아이콘 스타일링 */
+.bi {
+  font-size: 16px;
 }
 </style>
