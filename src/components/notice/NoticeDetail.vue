@@ -7,16 +7,16 @@
       <div class="notice-detail">
         <div class="detail-header">
           <h3 class="detail-title">{{ notice.title }}</h3>
-          <div class="detail-info">
+          <div class="detail-profile">
             <div class="detail-profile-image">
               <i class="bi bi-person-circle"></i>
             </div>
-            <div class="detail-profile">
-              <span class="detail-profile-name">{{ notice.author }}</span>
-              <span class="detail-profile-date">{{ notice.date }}</span>
-              <span class="detail-profile-views">조회수 {{ notice.views }}</span>
-            </div>
           </div>
+            <span class="detail-profile-name">{{ notice.author }}</span>
+            <div class="detail-info">
+              <span class="detail-info-date">{{ notice.date }}</span>
+              <span class="detail-info-views">조회수 {{ notice.views }}</span>
+            </div>
         </div>
         <div class="detail-content">
           {{ notice.content }}
@@ -75,7 +75,7 @@ export default {
   margin-bottom: 1rem;
 }
 
-.detail-info {
+.detail-profile {
   color: #9A8A80;
   display: flex;
 }
@@ -86,9 +86,8 @@ export default {
   font-family: 'NanumGothicBold';
 }
 
-.detail-profile {
-  display: flex;
-  flex-direction: column;
+.detail-info {
+
   margin-left: 1rem;
 }
 
