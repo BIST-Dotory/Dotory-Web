@@ -1,18 +1,43 @@
 <template>
-  <div class="notice-detail">
-    <h1>{{ notice.title }}</h1>
-    <div class="content">
-      {{ notice.content }}
+  <div class="container">
+    <div class="section-title">
+      <h2 class="title">공지사항</h2>
     </div>
-    <button @click="goBack">목록으로</button>
+    <div class="content">
+      <div class="notice-detail">
+        <div class="detail-header">
+          <h3 class="detail-title">{{ notice.title }}</h3>
+          <div class="detail-info">
+            <div class="detail-profile-image">
+              <i class="bi bi-person-circle"></i>
+            </div>
+            <div class="detail-profile">
+              <span class="detail-profile-name">{{ notice.author }}</span>
+              <span class="detail-profile-date">{{ notice.date }}</span>
+              <span class="detail-profile-views">조회수 {{ notice.views }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="detail-content">
+          {{ notice.content }}
+        </div>
+        <div class="button-container">
+          <button class="btn-list" @click="goBack">
+            <i class="bi bi-list"></i>
+            목록
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
+
 
 <script>
 export default {
   name: 'NoticeDetail',
   props: {
-    id: { // 라우트 파라미터를 prop으로 받음
+    id: {
       type: String,
       required: true
     }
@@ -21,8 +46,11 @@ export default {
     return {
       notice: {
         id: this.id,
-        title: '',
-        content: ''
+        title: '첫번째 공지사항',
+        author: '관리자',
+        date: '2024.11.19',
+        views: 0,
+        content: '공지사항 내용입니다.'
       }
     }
   },
@@ -30,7 +58,68 @@ export default {
     goBack() {
       this.$router.push({ name: 'Notice' })
     }
-  },
-  // created() 훅에서 id를 이용해 게시글 데이터를 불러올 수 있습니다
+  }
 }
 </script>
+
+<style scoped>
+@import "@/assets/css/style.css";
+
+.detail-header {
+  margin: 1rem;
+}
+
+.detail-title {
+  font-size: 24px;
+  font-family: 'NanumGothicBold';
+  margin-bottom: 1rem;
+}
+
+.detail-info {
+  color: #9A8A80;
+  display: flex;
+}
+
+.detail-profile-name {
+  font-size: 18px;
+  color: #4F3322;
+  font-family: 'NanumGothicBold';
+}
+
+.detail-profile {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1rem;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-list {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #BA7851;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 20px;
+  font-family: 'NanumGothic';
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-list:hover {
+  background-color: #9B4B1C;
+}
+
+.bi-list {
+  font-size: 20px;
+}
+
+.bi-person-circle {
+  font-size: 50px;
+}
+</style>

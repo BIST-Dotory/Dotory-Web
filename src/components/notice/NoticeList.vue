@@ -13,40 +13,38 @@
             <th>작성일</th>
             <th>조회수</th>
           </tr>
+
         </thead>
         <tbody>
-          <tr>
-            <td>2</td>
-            <td>자유 게시글</td>
-            <td>관리자</td>
-            <td>2024.01.01</td>
-            <td>0</td>
+          <tr v-for="(item, index) in paginatedItems" :key="item.id">
+            <!-- 번호는 전체 데이터 기준으로 계산 -->
+            <td>{{ getItemNumber(item) }}</td>
+            <td @click="goToDetail(item.id)">{{ item.title }}</td>
+            <td>{{ item.author }}</td>
+            <td>{{ item.date }}</td>
+            <td>{{ item.views }}</td>
           </tr>
-          <tr>
-            <td>1</td>
-            <td>공지사항 게시글</td>
-            <td>관리자</td>
-            <td>2024.01.01</td>
-            <td>10</td>
+          <tr v-if="filteredItems.length === 0">
+            <td colspan="5">검색 결과가 없습니다.</td>
           </tr>
         </tbody>
       </table>
 
-      <nav class="pagination-nav">
+      <!-- 페이지네이션 -->
+      <nav class="pagination-nav" aria-label="Page navigation">
         <ul class="pagination-list">
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Previous">
+          <li :class="['page-item', { disabled: currentPage === 1 }]">
+            <a href="#" class="page-link" @click.prevent="goToFirstPage" aria-label="First">
               <i class="bi bi-arrow-left-short"></i>
             </a>
           </li>
-          <li class="page-item active"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item"><a class="page-link" href="#">...</a></li>
-          <li class="page-item"><a class="page-link" href="#">50</a></li>
-          <li class="page-item"><a class="page-link" href="#">51</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
+          <li v-for="page in pagesToShow" :key="page" :class="['page-item', { active: page === currentPage }]">
+            <a href="#" class="page-link" @click.prevent="changePage(page)">
+              {{ page }}
+            </a>
+          </li>
+          <li :class="['page-item', { disabled: currentPage === totalPages }]">
+            <a href="#" class="page-link" @click.prevent="goToLastPage" aria-label="Last">
               <i class="bi bi-arrow-right-short"></i>
             </a>
           </li>
@@ -57,12 +55,15 @@
       <div class="search-write-container">
         <div class="search-section">
           <div class="search-wrapper">
-            <select class="search-select">
-              <option selected>전체</option>
+            <select class="search-select" v-model="searchOption">
+              <option value="title">제목</option>
+              <option value="author">작성자</option>
+              <option value="all">전체</option>
             </select>
             <div class="search-input-group">
-              <input type="text" class="search-input" placeholder="검색어를 입력해주세요.">
-              <button class="search-button">
+              <input type="text" class="search-input" placeholder="검색어를 입력해주세요." v-model="searchKeyword"
+                @input="onSearch" />
+              <button class="search-button" @click="onSearch">
                 <i class="bi bi-search"></i>
               </button>
             </div>
@@ -82,38 +83,107 @@
 
 <script>
 export default {
-  props: {
-    totalPages: {
-      type: Number,
-      required: true,
-    },
-    currentPage: {
-      type: Number,
-      required: true,
-    },
+  data() {
+    return {
+      items: [
+      { id: 1, title: '첫번째 공지사항', author: '관리자', date: '2024.11.19', views: 0 },
+        { id: 2, title: '두번째 공지사항', author: '관리자', date: '2024.11.20', views: 5 },
+        { id: 3, title: '세번째 공지사항', author: '관리자', date: '2024.11.21', views: 10 },
+        { id: 4, title: '네번째 공지사항', author: '관리자', date: '2024.11.22', views: 7 },
+        { id: 5, title: '다섯번째 공지사항', author: '관리자', date: '2024.11.23', views: 2 },
+        { id: 6, title: '여섯번째 공지사항', author: '관리자', date: '2024.11.24', views: 1 },
+        { id: 7, title: '첫번째 공지사항', author: '관리자', date: '2024.11.19', views: 0 },
+        { id: 8, title: '두번째 공지사항', author: '관리자', date: '2024.11.20', views: 5 },
+        { id: 9, title: '세번째 공지사항', author: '관리자', date: '2024.11.21', views: 10 },
+        { id: 10, title: '네번째 공지사항', author: '관리자', date: '2024.11.22', views: 7 },
+        { id: 11, title: '다섯번째 공지사항', author: '관리자', date: '2024.11.23', views: 2 },
+        { id: 12, title: '여섯번째 공지사항', author: '관리자', date: '2024.11.24', views: 1 },
+        { id: 13, title: '첫번째 공지사항', author: '관리자', date: '2024.11.19', views: 0 },
+        { id: 14, title: '두번째 공지사항', author: '관리자', date: '2024.11.20', views: 5 },
+        { id: 15, title: '세번째 공지사항', author: '관리자', date: '2024.11.21', views: 10 },
+        { id: 16, title: '네번째 공지사항', author: '관리자', date: '2024.11.22', views: 7 },
+        { id: 17, title: '다섯번째 공지사항', author: '관리자', date: '2024.11.23', views: 2 },
+        { id: 18, title: '여섯번째 공지사항', author: '관리자', date: '2024.11.24', views: 1 },
+        { id: 19, title: '첫번째 공지사항', author: '관리자', date: '2024.11.19', views: 0 },
+        { id: 20, title: '두번째 공지사항', author: '관리자', date: '2024.11.20', views: 5 },
+        { id: 21, title: '세번째 공지사항', author: '관리자', date: '2024.11.21', views: 10 },
+        { id: 22, title: '네번째 공지사항', author: '관리자', date: '2024.11.22', views: 7 },
+        { id: 23, title: '다섯번째 공지사항', author: '관리자', date: '2024.11.23', views: 2 },
+        { id: 24, title: '여섯번째 공지사항', author: '관리자', date: '2024.11.24', views: 1 },
+      ],
+      itemsPerPage: 3,
+      currentPage: 1,
+      maxVisiblePages: 5,
+      searchKeyword: '',
+      searchOption: 'all',
+    };
   },
   computed: {
-    visiblePages() {
-      let pages = [];
-      if (this.totalPages <= 5) {
-        pages = Array.from({ length: this.totalPages }, (_, i) => i + 1);
-      } else {
-        if (this.currentPage <= 3) {
-          pages = [1, 2, 3, 4, '...', this.totalPages];
-        } else if (this.currentPage >= this.totalPages - 2) {
-          pages = [1, '...', this.totalPages - 3, this.totalPages - 2, this.totalPages - 1, this.totalPages];
-        } else {
-          pages = [1, '...', this.currentPage - 1, this.currentPage, this.currentPage + 1, '...', this.totalPages];
+    filteredItems() {
+      if (!this.searchKeyword) return this.sortedItems;
+
+      const keyword = this.searchKeyword.toLowerCase();
+
+      return this.sortedItems.filter((item) => {
+        if (this.searchOption === 'title') {
+          return item.title.toLowerCase().includes(keyword);
+        } else if (this.searchOption === 'author') {
+          return item.author.toLowerCase().includes(keyword);
+        } else if (this.searchOption === 'all') {
+          return (
+            item.title.toLowerCase().includes(keyword) ||
+            item.author.toLowerCase().includes(keyword)
+          );
         }
+        return false;
+      });
+    },
+    totalItems() {
+      return this.filteredItems.length;
+    },
+    sortedItems() {
+      return [...this.items].sort((a, b) => b.id - a.id);
+    },
+    totalPages() {
+      return Math.ceil(this.filteredItems.length / this.itemsPerPage);
+    },
+    startIndex() {
+      return (this.currentPage - 1) * this.itemsPerPage;
+    },
+    // 페이지별 아이템 표시
+    paginatedItems() {
+      return this.filteredItems.slice(this.startIndex, this.startIndex + this.itemsPerPage);
+    },
+    pagesToShow() {
+      const half = Math.floor(this.maxVisiblePages / 2);
+      let start = Math.max(this.currentPage - half, 1);
+      let end = Math.min(start + this.maxVisiblePages - 1, this.totalPages);
+
+      if (end - start + 1 < this.maxVisiblePages) {
+        start = Math.max(end - this.maxVisiblePages + 1, 1);
       }
-      return pages;
+
+      return Array.from({ length: end - start + 1 }, (_, i) => start + i);
     },
   },
   methods: {
     changePage(page) {
-      if (page !== '...' && page >= 1 && page <= this.totalPages) {
-        this.$emit('update:currentPage', page);
-      }
+      this.currentPage = page;
+    },
+    goToFirstPage() {
+      this.currentPage = 1;
+    },
+    goToLastPage() {
+      this.currentPage = this.totalPages;
+    },
+    onSearch() {
+      this.currentPage = 1; // 검색 시 첫 페이지로 이동
+    },
+    getItemNumber(item) {
+      return item.id; // 각 항목의 원래 id를 직접 반환
+    },
+    goToDetail(id) {
+    this.$router.push(`notice/${id}`);
     },
   },
 };
@@ -121,12 +191,6 @@ export default {
 
 <style scoped>
 @import "@/assets/css/style.css";
-
-.container {
-  width: 100%;
-  font-family: 'NanumGothic';
-  color: #4F3322;
-}
 
 .board-table {
   width: 100%;
@@ -182,45 +246,68 @@ export default {
   display: flex;
   justify-content: center;
   list-style: none;
-  padding: 0;
-  gap: 5px;
+  gap: 0.7rem;
 }
 
 .page-link {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   color: #4F3322;
   text-decoration: none;
-  border: 1px solid #DED0C1;
-  border-radius: 4px;
-  font-size: 14px;
+  border-radius: 5px;
+  border: none;
 }
 
 .page-item.active .page-link {
-  background-color: #4F3322;
-  border-color: #4F3322;
+  background-color: #BA7851;
+  border-color: #BA7851;
   color: white;
+}
+
+.page-item:first-child .page-link {
+  border-radius: 5px 5px 5px 5px;
+}
+
+.page-item:last-child .page-link {
+  border-radius: 5px 5px 5px 5px;
 }
 
 /* 검색 영역 */
 .search-write-container {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
+  gap: 1rem;
   margin-top: 2rem;
 }
 
+.write-section {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+.search-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .search-select {
-  padding: 8px 12px;
-  border: 1px solid #DED0C1;
-  border-radius: 4px;
-  color: #4F3322;
-  margin-right: 8px;
+  padding: 10px 10px;
+  border: 2px solid #9A8A80;
+  border-radius: 5px;
   min-width: 100px;
-  background-color: white;
 }
 
 .search-input-group {
@@ -229,41 +316,49 @@ export default {
 }
 
 .search-input {
-  padding: 8px 12px;
-  border: 1px solid #DED0C1;
-  border-radius: 4px 0 0 4px;
+  padding: 8px 10px;
+  border: 2px solid #9A8A80;
+  border-radius: 5px 0 0 5px;
   width: 250px;
-  color: #4F3322;
 }
 
 .search-button {
-  padding: 8px 16px;
+  padding: 8px 10px;
   background-color: white;
-  border: 1px solid #DED0C1;
+  border: 2px solid #9A8A80;
   border-left: none;
-  border-radius: 0 4px 4px 0;
-  color: #4F3322;
+  border-radius: 0 5px 5px 0;
 }
 
-/* 글쓰기 버튼 */
 .write-button {
-  padding: 8px 16px;
-  background-color: #4F3322;
+  padding: 10px 16px;
+  background-color: #BA7851;
   color: white;
   border: none;
-  border-radius: 4px;
-  font-size: 14px;
+  border-radius: 5px;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
+  font-family: 'NanumGothic';
 }
 
 .write-button:hover {
-  background-color: #3a261a;
+  background-color: #9B4B1C;
 }
 
 /* 아이콘 스타일링 */
-.bi {
+.bi-arrow-left-short, .bi-arrow-right-short {
+  margin-top: 2px;
+  font-size: 20px;
+  font-weight: 900; /* bolder보다 더 두꺼운 수치 지정 */
+  -webkit-text-stroke: 1px; /* 두께 증가 */
+  color: #4F3322;
+}
+
+.bi-search {
   font-size: 16px;
+  font-weight: 900; /* bolder보다 더 두꺼운 수치 지정 */
+  -webkit-text-stroke: 1px; /* 두께 증가 */
+  color: #4F3322;
 }
 </style>

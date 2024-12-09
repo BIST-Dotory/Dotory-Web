@@ -11,35 +11,7 @@
             </div>
             <div class="content-list">
               <div class="list-item">
-                <span class="item-title">게시글 제목게시글 제목게시글 제목게시글 제목게시글 제목게시글 제목게시글 제목</span>
-                <span class="item-info">
-                  <span class="author">관리자</span>
-                  <span class="date">2024.11.19</span>
-                </span>
-              </div>
-              <div class="list-item">
-                <span class="item-title">게시글 제목</span>
-                <span class="item-info">
-                  <span class="author">관리자</span>
-                  <span class="date">2024.11.19</span>
-                </span>
-              </div>
-              <div class="list-item">
-                <span class="item-title">게시글 제목</span>
-                <span class="item-info">
-                  <span class="author">관리자</span>
-                  <span class="date">2024.11.19</span>
-                </span>
-              </div>
-              <div class="list-item">
-                <span class="item-title">게시글 제목</span>
-                <span class="item-info">
-                  <span class="author">관리자</span>
-                  <span class="date">2024.11.19</span>
-                </span>
-              </div>
-              <div class="list-item">
-                <span class="item-title">게시글 제목</span>
+                <span class="item-title">첫번째 공지사항</span>
                 <span class="item-info">
                   <span class="author">관리자</span>
                   <span class="date">2024.11.19</span>
@@ -56,16 +28,9 @@
             </div>
             <div class="content-list">
               <div class="list-item">
-                <span class="item-title">게시글 제목</span>
+                <span class="item-title">첫번째 건의사항</span>
                 <span class="item-info">
-                  <span class="author">가나다</span>
-                  <span class="date">2024.11.19</span>
-                </span>
-              </div>
-              <div class="list-item">
-                <span class="item-title">게시글 제목</span>
-                <span class="item-info">
-                  <span class="author">가나다라</span>
+                  <span class="author">홍길동</span>
                   <span class="date">2024.11.19</span>
                 </span>
               </div>
@@ -86,13 +51,6 @@
                 <span class="item-title">[외박] 1001</span>
                 <span class="item-info">
                   <span class="author">가나다</span>
-                  <span class="date">2024.11.19</span>
-                </span>
-              </div>
-              <div class="list-item">
-                <span class="item-title">[외박] 1001</span>
-                <span class="item-info">
-                  <span class="author">가나다라</span>
                   <span class="date">2024.11.19</span>
                 </span>
               </div>
