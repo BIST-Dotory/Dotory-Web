@@ -70,7 +70,7 @@
           </div>
         </div>
         <div class="write-section">
-          <button type="button" class="write-button">
+          <button type="button" class="write-button" @click="goToWrite">
             <i class="bi bi-pencil-square"></i>
             글쓰기
           </button>
@@ -183,7 +183,10 @@ export default {
       return item.id; // 각 항목의 원래 id를 직접 반환
     },
     goToDetail(id) {
-    this.$router.push(`notice/${id}`);
+      this.$router.push(`notice/${id}`);
+    },
+    goToWrite() {
+      this.$router.push('notice/write');
     },
   },
 };

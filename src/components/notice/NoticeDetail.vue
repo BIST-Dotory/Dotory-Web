@@ -186,7 +186,6 @@ export default {
   display: flex;
   align-items: flex-start;
   margin-bottom: 2rem;
-  border-bottom: 1.5px solid #9A8A80;
 }
 
 .comment-content {
