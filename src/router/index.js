@@ -13,7 +13,6 @@ import StudentDetail from '~/student/StudentDetail.vue'
 import StudentList from '~/student/StudentList.vue'
 import Approval from '~/approval/Approval.vue'
 import Setting from '~/auth/Setting.vue'
-import Logout from '~/auth/Logout.vue'
 
 const routes = [
   {
@@ -93,11 +92,6 @@ const routes = [
         name: 'Setting',
         component: Setting
       },
-      {
-        path: 'logout',
-        name: 'Logout',
-        component: Logout
-      }
     ]
   }
 ]
