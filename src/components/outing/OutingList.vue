@@ -17,9 +17,9 @@
 
         </thead>
         <tbody>
-          <tr v-for="(item, index) in paginatedItems" :key="item.id">
+          <tr v-for="(item, index) in paginatedItems" :key="item.id" @click="goToDetail(item.id)">
             <!-- 번호는 전체 데이터 기준으로 계산 -->
-            <td @click="goToDetail(item.id)">{{ item.outing }}</td>
+            <td>{{ item.outing }}</td>
             <td>{{ item.room }}</td>
             <td>{{ item.author }}</td>
             <td>{{ item.dest }}</td>
