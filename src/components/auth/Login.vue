@@ -1,36 +1,36 @@
 <template>
-  <div class="container">
-    <div class="logo-section mb-4">
-      <img src="@/assets/images/logo.png" alt="Dotory Logo" class="logo-img">
-      <div class="title-section">
-        <div class="sub-title">우리들의 휴식공간</div>
-        <div class="main-title">DOTORY</div>
+  <div class="login-container">
+    <div class="login-logo-section mb-4">
+      <img src="@/assets/images/logo.png" alt="Dotory Logo" class="logo-img" />
+      <div class="login-title-section">
+        <div class="login-sub-title">우리들의 휴식공간</div>
+        <div class="login-main-title">DOTORY</div>
       </div>
     </div>
 
     <div class="login-form">
-      <form @submit.prevent="handleSubmit">
-        <div class="form-group">
-          <label for="userId">아이디</label>
-          <input type="text" class="form-control" id="userId" v-model="userId" placeholder="아이디를 입력하세요">
+      <form @submit.prevent="submitForm">
+        <div class="login-form-group">
+          <label for="user-id" class="login-label">아이디</label>
+          <input type="text" class="login-input" id="user-id" v-model="userId" placeholder="아이디를 입력하세요" required />
         </div>
 
-        <div class="form-group">
-          <label for="password">비밀번호</label>
-          <input type="password" class="form-control" id="password" v-model="password" placeholder="비밀번호를 입력하세요">
+        <div class="login-form-group">
+          <label for="password" class="login-label">비밀번호</label>
+          <input type="password" class="login-input" id="password" v-model="password" placeholder="비밀번호를 입력하세요"
+            required />
         </div>
 
-        <div class="form-check-section d-flex justify-content-between">
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="rememberMe" v-model="rememberMe">
-            <label class="form-check-label" for="rememberMe">로그인 상태 유지</label>
+        <div class="login-form-check-section d-flex justify-content-between align-items-center">
+          <div class="login-form-check">
+            <input type="checkbox" class="login-checkbox" id="remember-me" v-model="rememberMe" />
+            <label class="login-checkbox-label" for="remember-me">로그인 상태 유지</label>
           </div>
-          <a href="#" class="forgot-password">비밀번호 찾기</a>
+          <a href="#" class="login-forgot-password">비밀번호 찾기</a>
         </div>
-
-        <button @click="Login" class="btn btn-login w-100">로그인</button>
+        
+        <button type="submit" class="login-submit-button w-100">로그인</button>
       </form>
-
     </div>
   </div>
 </template>
@@ -42,33 +42,45 @@ export default {
     return {
       userId: '',
       password: '',
-      rememberMe: false
-    }
+      rememberMe: false,
+    };
   },
   methods: {
-    handleSubmit() {
-      // Here you would typically validate credentials
-      // For now, we'll just redirect to dashboard
+    submitForm() {
+      if (!this.userId || !this.password) {
+        alert('아이디와 비밀번호를 모두 입력해주세요.');
+        return;
+      }
+      localStorage.setItem('isLoggedIn', 'true');
+      this.$router.push('/dashboard');
+    },
+    login() {
       localStorage.setItem('isLoggedIn', 'true')
       this.$router.push('/dashboard')
     }
-  }
-}
+  },
+};
 </script>
 
 <style scoped>
-
-.container {
-  max-width: 500px;
-  margin: 100px auto;
+.login-container {
+  width: 100%;
+  font-family: 'NanumGothic', sans-serif;
+  color: #4f3322;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: 20px;
+  min-height: 100vh;
 }
 
-.logo-section {
+.login-logo-section {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
+  margin-bottom: 20px;
 }
 
 .logo-img {
@@ -76,23 +88,22 @@ export default {
   height: 120px;
 }
 
-.title-section {
+.login-title-section {
   text-align: left;
   margin-left: -20px;
 }
 
-.sub-title {
+.login-sub-title {
   font-size: 20px;
-  font-family: 'NanumGothic';
-  color: #9A8A80;
+  color: #9a8a80;
   margin-top: 15px;
 }
 
-.main-title {
+.login-main-title {
   font-size: 48px;
   font-weight: bold;
-  font-family: 'Baloo2-ExtraBold';
-  color: #4F3322;
+  font-family: 'Baloo2-ExtraBold', sans-serif;
+  color: #4f3322;
   margin-top: -15px;
 }
 
@@ -103,57 +114,87 @@ export default {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 500px;
+  box-sizing: border-box;
 }
 
-.form-group {
+.login-form-group {
   margin-bottom: 20px;
 }
 
-.form-group label {
+.login-label {
   display: block;
   margin-bottom: 10px;
-  font-family: 'NanumGothic';
-  color: #4F3322;
+  font-family: 'NanumGothic', sans-serif;
+  color: #4f3322;
 }
 
-.form-group input {
-  font-family: 'NanumGothic';
-  color: #4F3322;
-}
-.form-group input::placeholder {
-  color: #9A8A80;
-}
-
-.form-control {
+.login-input {
   width: 100%;
   padding: 10px;
-  border: 1px solid #9A8A80;
+  box-sizing: border-box;
+  border: 1px solid #9a8a80;
   border-radius: 10px;
   font-size: 14px;
+  font-family: 'NanumGothic', sans-serif;
+  color: #4f3322;
 }
 
-.form-check-section {
+.login-input::placeholder {
+  color: #9a8a80;
+}
+
+.login-form-check-section {
   margin: 15px 0;
-  font-family: 'NanumGothic';
+  font-family: 'NanumGothic', sans-serif;
 }
 
-.form-check-input {
-  border: 1px solid #9A8A80;
+.login-checkbox {
+  border: 1px solid #9a8a80;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  border: 1px solid #9a8a80;
+  cursor: pointer;
+  position: relative;
+  margin-right: 5px;
+  vertical-align: middle;
 }
 
-.form-check-label {
+.login-checkbox:checked {
+  background-color: #ba7851;
+}
+
+.login-checkbox:checked::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 5px;
+  height: 9px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.login-checkbox-label {
   font-size: 14px;
-  color: #4F3322;
+  color: #4f3322;
+  vertical-align: middle;
 }
 
-.forgot-password {
+.login-forgot-password {
   font-size: 14px;
   text-decoration: none;
-  color: #4F3322;
+  color: #4f3322;
 }
 
-.btn-login {
-  background-color: #BA7851;
+.login-submit-button {
+  background-color: #ba7851;
   color: #ffffff;
   padding: 12px;
   border: none;
@@ -161,27 +202,21 @@ export default {
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s;
-  font-family: 'NanumGothicBold';
+  font-family: 'NanumGothicBold', sans-serif;
 }
 
-.btn-login:hover {
-  background-color: #9B4B1C;
+.login-submit-button:hover {
+  background-color: #9b4b1c;
   color: #ffffff;
 }
 
-.login-form .form-control:focus {
-  border-color: #9A8A80;
+.login-input:focus {
+  border-color: #9a8a80;
   box-shadow: none;
   outline: none;
 }
 
-.form-check-input:focus {
-  border-color: #9A8A80;
-  box-shadow: none;
+.login-checkbox:focus {
   outline: none;
-}
-
-.form-check-input:checked {
-  background-color: #BA7851;
 }
 </style>

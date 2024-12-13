@@ -179,7 +179,34 @@ export default {
 </script>
 
 <style scoped>
-@import "@/assets/css/style.css";
+.title {
+  font-size: 24px;
+  position: relative;
+  font-family: 'NanumGothicBold';
+  color: #4F3322;
+}
+
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #4F3322;
+  margin-bottom: 10px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #4F3322;
+  margin-bottom: 10px;
+}
+
+.container {
+  width: 100%;
+  font-family: 'NanumGothic';
+  color: #4F3322;
+}
 
 .board-table {
   width: 100%;
