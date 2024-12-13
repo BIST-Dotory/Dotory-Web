@@ -71,7 +71,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </template>
@@ -164,6 +163,7 @@ textarea::placeholder {
 .button-container {
   display: flex;
   justify-content: space-between;
+  margin: 0 1rem 0 1rem;
 }
 
 .button-container-left {
