@@ -83,7 +83,7 @@ export default {
         title: '첫번째 건의사항',
         author: '사용자',
         date: '2024.11.19',
-        views: 0,
+        views: 1,
         content: '건의사항 내용입니다.'
       },
       comment: {
