@@ -89,9 +89,9 @@ export default {
       showDialog: false,
       formData: {
         room: '101',
-        name: '가나다',
-        number: '20000001',
-        major: '국어국문학과',
+        name: '사용자',
+        number: '20000000',
+        major: '컴퓨터공학과',
         tel: '010-0000-0000',
         point: '0',
         notes: '',

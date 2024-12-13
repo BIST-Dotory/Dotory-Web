@@ -28,11 +28,12 @@
             <button class="more-btn" @click="$router.push('/suggest')">더 보기</button>
           </div>
           <div class="content-list">
-            <div class="list-item">
-              <span class="item-title">첫번째 건의사항</span>
+            <div v-for="suggest in latestSuggests" :key="suggest.id" class="list-item"
+              @click="goToSuggestDetail(suggest.id)">
+              <span class="item-title">{{ suggest.title }}</span>
               <span class="item-info">
-                <span class="author">홍길동</span>
-                <span class="date">2024.11.19</span>
+                <span class="author">{{ suggest.author }}</span>
+                <span class="date">{{ suggest.date }}</span>
               </span>
             </div>
           </div>
@@ -48,11 +49,12 @@
             <button class="more-btn" @click="$router.push('/outing')">더 보기</button>
           </div>
           <div class="content-list">
-            <div class="list-item">
-              <span class="item-title">[외박] 1001</span>
+            <div v-for="outing in latestOutings" :key="outing.id" class="list-item"
+              @click="goToOutingDetail(outing.id)">
+              <span class="item-title">{{ outing.title }}</span>
               <span class="item-info">
-                <span class="author">가나다</span>
-                <span class="date">2024.11.19</span>
+                <span class="author">{{ outing.author }}</span>
+                <span class="date">{{ outing.date }}</span>
               </span>
             </div>
           </div>
@@ -64,36 +66,85 @@
 
 <script>
 export default {
-  name: 'Dashboard',
+  name: 'DashBoard',
   data() {
     return {
-      notices: []
+      notices: [],
+      suggests: [],
+      outings: []
     }
   },
-  
+
   computed: {
     latestNotices() {
       return this.notices
-        .sort((a, b) => b.id - a.id) // Sort by id descending
-        .slice(0, 10) // Get top 10
+        .sort((a, b) => b.id - a.id)
+        .slice(0, 5)
+    },
+    latestSuggests() {
+      return this.suggests
+        .sort((a, b) => b.id - a.id)
+        .slice(0, 5)
+    },
+    latestOutings() {
+      return this.outings
+        .sort((a, b) => b.id - a.id)
+        .slice(0, 12)
     }
   },
-  
+
   methods: {
     async fetchNotices() {
       this.notices = [
-        { id: 1, title: '첫번째 공지사항', author: '관리자', date: '2024.11.19' },
-        { id: 2, title: '두번째 공지사항', author: '관리자', date: '2024.11.19' },
+        { id: 11, title: '열한번째 공지사항', author: '관리자', date: '2024.11.27' },
+        { id: 12, title: '열두번째 공지사항', author: '관리자', date: '2024.11.28' },
+        { id: 13, title: '열세번째 공지사항', author: '관리자', date: '2024.11.29' },
+        { id: 14, title: '열네번째 공지사항', author: '관리자', date: '2024.11.30' },
+        { id: 15, title: '열다섯번째 공지사항', author: '관리자', date: '2024.12.01' },
       ]
     },
-    
+    async fetchSuggests() {
+      this.suggests = [
+        { id: 1, title: '첫번째 건의사항', author: '사용자', date: '2024.11.27' },
+        { id: 2, title: '두번째 건의사항', author: '가나다', date: '2024.11.27' },
+        { id: 3, title: '세번째 건의사항', author: '라마바', date: '2024.11.29' },
+        { id: 4, title: '네번째 건의사항', author: '도레미', date: '2024.11.30' },
+        { id: 5, title: '다섯번째 건의사항', author: '알파벳', date: '2024.12.01' },
+      ]
+    },
+
+    async fetchOutings() {
+      this.outings = [
+        { id: 1, title: '[외출] 102호', author: '가나다', date: '2024.11.19' },
+        { id: 2, title: '[외출] 102호', author: '라마바', date: '2024.11.19' },
+        { id: 3, title: '[외출] 103호', author: '도레미', date: '2024.11.19' },
+        { id: 4, title: '[외출] 104호', author: '알파벳', date: '2024.11.19' },
+        { id: 5, title: '[외박] 101호', author: '사용자', date: '2024.11.20' },
+        { id: 6, title: '[외박] 102호', author: '가나다', date: '2024.11.22' },
+        { id: 7, title: '[외박] 102호', author: '라마바', date: '2024.11.27' },
+        { id: 8, title: '[외박] 103호', author: '도레미', date: '2024.11.28' },
+        { id: 9, title: '[외출] 104호', author: '알파벳', date: '2024.11.30' },
+        { id: 10, title: '[외박] 101호', author: '사용자', date: '2024.12.01' },
+      ]
+    },
+
     goToNoticeDetail(id) {
       this.$router.push(`/notice/${id}`)
+    },
+
+    goToSuggestDetail(id) {
+      this.$router.push(`/suggest/${id}`)
+    },
+
+    goToOutingDetail(id) {
+      this.$router.push(`/outing/${id}`)
     }
   },
-  
+
   created() {
     this.fetchNotices()
+    this.fetchSuggests()
+    this.fetchOutings()
   }
 }
 </script>

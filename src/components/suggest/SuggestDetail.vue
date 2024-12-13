@@ -82,15 +82,15 @@ export default {
         id: this.id,
         title: '첫번째 건의사항',
         author: '사용자',
-        date: '2024.11.19',
-        views: 1,
+        date: '2024.11.27 18:00',
+        views: 10,
         content: '건의사항 내용입니다.'
       },
       comment: {
         required: true,
         author: '관리자',
         text: '댓글 내용입니다.',
-        date: '2024.11.19 20:00', 
+        date: '2024.11.27 18:10', 
       },
     }
   },

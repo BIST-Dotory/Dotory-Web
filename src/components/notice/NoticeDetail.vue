@@ -93,15 +93,15 @@ export default {
         id: this.id,
         title: '첫번째 공지사항',
         author: '관리자',
-        date: '2024.11.19',
-        views: 1,
+        date: '2024.11.19 12:00',
+        views: 100,
         content: '공지사항 내용입니다.'
       },
       comment: {
         required: true,
         author: '사용자',
         text: '댓글 내용입니다.',
-        date: '2024.11.19 20:00', 
+        date: '2024.11.19 13:00', 
       },
     }
   },

@@ -80,9 +80,9 @@ export default {
     return {
       outing: {
         id: this.id,
-        title: '[외출] 101호',
-        author: '사용자',
-        date: '2024.11.19',
+        title: '[외출] 102호',
+        author: '가나다',
+        date: '2024.11.19 12:00',
         views: 1,
         content: '외출외박 내용입니다.'
       },
@@ -90,7 +90,7 @@ export default {
         required: true,
         author: '관리자',
         text: '댓글 내용입니다.',
-        date: '2024.11.19 20:00', 
+        date: '2024.11.19 20:40', 
       },
     }
   },
