@@ -63,7 +63,7 @@
             <div class="dialog-overlay" v-if="showDialog">
               <div class="dialog-box">
                 <h3 class="dialog-title">게시글을 삭제하겠습니까??</h3>
-                <p class="dialog-message">변경한 내용이 저장되지 않을 수 있습니다.</p>
+                <p class="dialog-message">삭제한 게시글은 복구할 수 없습니다.</p>
                 <div class="dialog-buttons">
                   <button class="dialog-btn" @click="goBack">삭제</button>
                   <button class="dialog-btn-cancel" @click="showDialog = false">취소</button>

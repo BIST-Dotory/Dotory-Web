@@ -115,7 +115,9 @@ export default {
       const keyword = this.searchKeyword.toLowerCase();
 
       return this.sortedItems.filter((item) => {
-        if (this.searchOption === 'number') {
+        if (this.searchOption === 'room') {
+          return item.room.toLowerCase().includes(keyword);
+        } else if (this.searchOption === 'number') {
           return item.number.toLowerCase().includes(keyword);
         } else if (this.searchOption === 'name') {
           return item.name.toLowerCase().includes(keyword);
@@ -125,7 +127,8 @@ export default {
           return (
             item.number.toLowerCase().includes(keyword) ||
             item.name.toLowerCase().includes(keyword) ||
-            item.major.toLowerCase().includes(keyword)
+            item.major.toLowerCase().includes(keyword) ||
+            item.room.toLowerCase().includes(keyword)
           );
         }
         return false;
