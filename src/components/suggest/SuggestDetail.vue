@@ -22,6 +22,9 @@
           <div class="detail-content">
             {{ suggest.content }}
           </div>
+          <div class="image-container">
+            <i class="bi bi-image"></i>
+          </div>
           <div class="detail-comment">
             <textarea class="comment-input" placeholder="댓글을 입력하세요"></textarea>
             <button class="button-comment">등록</button>
@@ -138,8 +141,7 @@ export default {
 }
 
 .detail-content {
-  margin-top: 1rem;
-  margin-bottom: 5rem;
+  margin: 1rem 0 1rem 0;
   white-space: pre-line;
 }
 
@@ -261,5 +263,19 @@ export default {
 .bi-person-circle {
   font-size: 50px;
   color: #9A8A80;
+}
+
+.image-container {
+  width: 40rem;
+  height: 20rem;
+  margin-bottom: 5rem;
+  background-color: #9A8A80;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bi-image {
+  font-size: 50px;
 }
 </style>

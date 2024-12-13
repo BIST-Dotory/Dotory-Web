@@ -138,8 +138,7 @@ export default {
 }
 
 .detail-content {
-  margin-top: 1rem;
-  margin-bottom: 5rem;
+  margin: 1rem 0 5rem 0;
   white-space: pre-line;
 }
 
@@ -261,5 +260,9 @@ export default {
 .bi-person-circle {
   font-size: 50px;
   color: #9A8A80;
+}
+
+.bi-image {
+  font-size: 50px;
 }
 </style>
