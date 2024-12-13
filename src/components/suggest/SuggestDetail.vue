@@ -50,12 +50,12 @@
               </button>
             </div>
             <div class="button-container-right" disabled="disabled">
-              <button class="btn-rewrite" @click="editNotice(suggest)">
+              <button class="btn-rewrite" @click="editSuggest(suggest)">
                 <i class="bi bi-pencil"></i>
                 수정
               </button>
               &nbsp;&nbsp;
-              <button class="btn-delete" @click="deleteNotice(suggest.id)">
+              <button class="btn-delete" @click="deleteSuggest(suggest.id)">
                 <i class="bi bi-trash"></i>
                 삭제
               </button>
@@ -69,7 +69,7 @@
 
 <script>
 export default {
-  name: 'NoticeDetail',
+  name: 'SuggestDetail',
   props: {
     id: {
       type: String,
@@ -241,7 +241,7 @@ export default {
   align-items: center;
   gap: 5px;
   background-color: #fff;
-  color: #4F3322;
+  color: #9A8A80;
   border: 1px solid #9A8A80;
   border-radius: 5px;
   padding: 5px 15px;
