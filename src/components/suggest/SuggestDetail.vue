@@ -223,13 +223,26 @@ export default {
   background-color: #fff;
 }
 
-.btn-list, .btn-rewrite, .btn-delete {
+.btn-list {
   display: flex;
   align-items: center;
   gap: 5px;
   background-color: #BA7851;
   color: white;
   border: none;
+  border-radius: 5px;
+  padding: 5px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-rewrite, .btn-delete {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #fff;
+  color: #4F3322;
+  border: 1px solid #9A8A80;
   border-radius: 5px;
   padding: 5px 15px;
   cursor: pointer;
